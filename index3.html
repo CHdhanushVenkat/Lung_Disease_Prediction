@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lung Disease Prediction</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: #f3f3f3; }
+        .container { max-width: 600px; margin: 0 auto; padding: 20px; }
+        h1 { color: #333; }
+        p { color: #666; }
+        form { margin-top: 20px; }
+        input[type="file"] { display: none; }
+        label { padding: 10px 20px; background-color: #4CAF50; color: white; cursor: pointer; }
+        .result { margin-top: 20px; padding: 20px; background-color: gray; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Lung Disease Prediction</h1>
+        <p>Please upload a lung X-ray image for disease prediction.</p>
+        <form method="POST" enctype="multipart/form-data">
+            <label for="file">Choose Image</label>
+            <input type="file" id="file" name="file" accept="image/*">
+            <input type="submit" value="Predict">
+        </form>
+        <div class="result">
+            {% if result is defined %}
+                {% if result == 0 %}
+                    <p>The image is classified as Normal.</p>
+                {% else %}
+                    <p>The image is classified as Pneumonia.</p>
+                {% endif %}
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
